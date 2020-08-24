@@ -71,6 +71,6 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[listOfcountries]</InArgument>
       </InvokeMethod.TargetObject>
     </InvokeMethod>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[listOfcountries(0) + &quot; &quot; + listOfcountries(1) + &quot; &quot; + listOfcountries(2)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Join(&quot;,&quot;, listOfcountries.GetRange(0,3))]" />
   </Sequence>
 </Activity>
