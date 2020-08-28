@@ -44,7 +44,7 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap:VirtualizedContainerService.HintSize="884,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="A user will have 3 tries to enter the correct criteria. If the user enters a string wrong 3 times they will receive an error message in the output. If they enter a string correctly then they will receive a nice message in the output." DisplayName="String Validation " sap:VirtualizedContainerService.HintSize="884,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="userInput" />
       <Variable x:TypeArguments="x:Boolean" Name="result" />
@@ -61,6 +61,7 @@
         <av:Size x:Key="ShapeSize">60,74.6666666666667</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">300,77.1666666666667 300,127.166666666667</av:PointCollection>
         <x:Double x:Key="Width">850</x:Double>
+        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
@@ -74,7 +75,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,179.833333333333 300,209.833333333333 280,209.833333333333 280,376.666666666667</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please type a string. The string should start with a capital letter and be betweeen 8 and 20 characters" Title="User Validaiton Check">
+      <ui:InputDialog Options="{x:Null}" DisplayName="User input" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please type a string. The string should start with a capital letter and be betweeen 8 and 20 characters. You only get 3 tries to get this right. GO!" Title="User Validaiton Check">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[userInput]</OutArgument>
         </ui:InputDialog.Result>
@@ -106,7 +107,7 @@
                   <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Perfect&quot;]" />
+              <ui:LogMessage DisplayName="Correct user input" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Perfect&quot;]" />
             </FlowStep>
           </FlowDecision.True>
           <FlowDecision.False>
@@ -118,7 +119,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">490,389 490,283.333333333333</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign DisplayName="Wrong input counter" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
                 </Assign.To>
@@ -142,7 +143,7 @@
                       <av:Point x:Key="ShapeLocation">450.666666666667,196.666666666667</av:Point>
                       <av:Size x:Key="ShapeSize">78.6666666666667,86.6666666666667</av:Size>
                       <av:PointCollection x:Key="TrueConnector">450.666666666667,240 420.666666666667,240 420.666666666667,153.5 400,153.5</av:PointCollection>
-                      <av:PointCollection x:Key="FalseConnector">529.333333333333,240 559.333333333333,240 559.333333333333,110 640,110</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">529.333333333333,240 559.333333333333,240 559.333333333333,110 620,110</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
@@ -152,11 +153,11 @@
                     <FlowStep x:Name="__ReferenceID5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">640,83.6666666666667</av:Point>
+                          <av:Point x:Key="ShapeLocation">620,83.6666666666667</av:Point>
                           <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;I'm going to need you to rethink life. Try again tomorrow&quot;]">
+                      <ui:LogMessage DisplayName="Incorrect user input" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;I'm going to need you to rethink life. Try again tomorrow.&quot;]">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
